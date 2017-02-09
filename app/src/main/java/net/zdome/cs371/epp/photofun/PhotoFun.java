@@ -17,11 +17,22 @@ public class PhotoFun extends AppCompatActivity {
         setContentView(R.layout.activity_photo_fun);
 
         Button grayFilterButton = (Button) findViewById(R.id.grayFilterButton);
-        grayFilterButton.setOnClickListener(new GrayFilterButtonListener());
+        grayFilterButton.setOnClickListener(new filterButtonListener());
+        Button brightnessFilterButton = (Button) findViewById(R.id.brightnessFilterButton);
+        brightnessFilterButton.setOnClickListener(new filterButtonListener());
     }
 
-    private class GrayFilterButtonListener implements View.OnClickListener {
-        public void onClick(View v) {
+    private int constrain (int color){
+        if (color > 255)
+            return 255;
+        else if (color < 0)
+            return 0;
+        else
+            return color;
+    }
+
+    private class filterButtonListener implements View.OnClickListener {
+        public void onClick(View button) {
 
             ImageView originalImageView = (ImageView) findViewById(R.id.originalImage);
             BitmapDrawable originalDrawableBmp = (BitmapDrawable) originalImageView.getDrawable();
@@ -34,9 +45,21 @@ public class PhotoFun extends AppCompatActivity {
             for (int w = 0; w < width; w++) {
                 for (int h = 0; h < height; h++) {
                     int pixel = originalBmp.getPixel(w, h);
-                    int intensity = (Color.red(pixel) + Color.green(pixel) + Color.blue(pixel)) / 3;
-                    int grayPixel = Color.argb(Color.alpha(pixel), intensity, intensity, intensity);
-                    newBmp.setPixel(w, h, grayPixel);
+                    if (button.getId() == R.id.grayFilterButton) {
+                        int intensity = (Color.red(pixel) + Color.green(pixel) + Color.blue(pixel)) / 3;
+                        int grayPixel = Color.argb(Color.alpha(pixel), intensity, intensity, intensity);
+                        newBmp.setPixel(w, h, grayPixel);
+                    } else if (button.getId() == R.id.brightnessFilterButton) {
+                        int adjustment = 50;
+                        int red = constrain(Color.red(pixel) + adjustment);
+                        int green = constrain(Color.green(pixel) + adjustment);
+                        int blue = constrain(Color.blue(pixel) + adjustment);
+                        int colorPixel = Color.argb(Color.alpha(pixel), red, green, blue);
+                        newBmp.setPixel(w, h, colorPixel);
+                    }
+                    else {
+                        //TBD add error box
+                    }
                 }
             }
 
