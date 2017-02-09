@@ -22,20 +22,17 @@ public class PhotoFun extends AppCompatActivity {
 
         int width = originalBmp.getWidth();
         int height = originalBmp.getHeight();
-
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                int p = originalBmp.getPixel(i, j);
-            }
-        }
-
         Bitmap newBmp = Bitmap.createBitmap(width,height,originalBmp.getConfig());
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                //newBmp.setPixel(i, j, Color.BLACK);
-                newBmp.setPixel(i, j, 0xff000000);
+
+        for (int w = 0; w < width; w++) {
+            for (int h = 0; h < height; h++) {
+                int pixel = originalBmp.getPixel(w, h);
+                int intensity = (Color.red(pixel) + Color.green(pixel) + Color.blue(pixel)) / 3;
+                int grayPixel = Color.argb (Color.alpha(pixel), intensity, intensity, intensity);
+                newBmp.setPixel(w, h, grayPixel);
             }
         }
+
         newImageView = (ImageView) findViewById(R.id.newImage);
         newImageView.setImageBitmap(newBmp);
 
