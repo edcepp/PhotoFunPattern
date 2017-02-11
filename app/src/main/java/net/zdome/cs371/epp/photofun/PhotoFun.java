@@ -14,14 +14,21 @@ public class PhotoFun extends AppCompatActivity {
         setContentView(R.layout.activity_photo_fun);
 
         Button grayFilterButton = (Button) findViewById(R.id.grayFilterButton);
-        grayFilterButton.setOnClickListener(new filterButtonListener());
+        grayFilterButton.setOnClickListener(new grayFilterButtonListener());
         Button brightnessFilterButton = (Button) findViewById(R.id.brightnessFilterButton);
-        brightnessFilterButton.setOnClickListener(new filterButtonListener());
+        brightnessFilterButton.setOnClickListener(new brightnessFilterButtonListener());
     }
 
-    private class filterButtonListener implements View.OnClickListener {
+    private class grayFilterButtonListener implements View.OnClickListener {
         public void onClick(View button) {
-            Filter filter = new Filter(PhotoFun.this);
+            GrayFilter filter = new GrayFilter(PhotoFun.this);
+            filter.apply();
+        }
+    }
+
+    private class brightnessFilterButtonListener implements View.OnClickListener {
+        public void onClick(View button) {
+            BrightnessFilter filter = new BrightnessFilter(PhotoFun.this);
             filter.apply();
         }
     }

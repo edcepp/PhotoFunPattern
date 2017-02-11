@@ -6,26 +6,15 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.Color;
 import android.widget.ImageView;
 
-
 /**
- * Created by eepp on 2/8/17.
+ * Created by eepp on 2/10/17.
  */
 
-public class Filter {
 
-    Activity rootActivity;
+public class GrayFilter extends PhotoFilter {
 
-    Filter(Activity a) {
-        rootActivity = a;
-    }
-
-    private int constrain(int color) {
-        if (color > 255)
-            return 255;
-        else if (color < 0)
-            return 0;
-        else
-            return color;
+    GrayFilter(Activity a) {
+        super(a);
     }
 
     public Bitmap createTransform(Bitmap inBmp) {
@@ -44,18 +33,4 @@ public class Filter {
         return outBmp;
 
     }
-
-    public void apply() {
-
-        ImageView originalImageView = (ImageView) rootActivity.findViewById(R.id.originalImage);
-        BitmapDrawable originalDrawableBmp = (BitmapDrawable) originalImageView.getDrawable();
-        Bitmap originalBmp = originalDrawableBmp.getBitmap();
-
-        Bitmap newBmp = createTransform(originalBmp);
-        ImageView newImageView = (ImageView) rootActivity.findViewById(R.id.newImage);
-        newImageView.setImageBitmap(newBmp);
-
-    }
-
-
 }
