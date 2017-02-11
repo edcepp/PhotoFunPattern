@@ -17,20 +17,9 @@ public class GrayFilter extends PhotoFilter {
         super(a);
     }
 
-    public Bitmap createTransform(Bitmap inBmp) {
-        int width = inBmp.getWidth();
-        int height = inBmp.getHeight();
-        Bitmap outBmp = Bitmap.createBitmap(width, height, inBmp.getConfig());
-
-        for (int w = 0; w < width; w++) {
-            for (int h = 0; h < height; h++) {
-                int pixel = inBmp.getPixel(w, h);
-                int intensity = (Color.red(pixel) + Color.green(pixel) + Color.blue(pixel)) / 3;
-                int grayPixel = Color.argb(Color.alpha(pixel), intensity, intensity, intensity);
-                outBmp.setPixel(w, h, grayPixel);
-            }
-        }
-        return outBmp;
-
+    public int transformPixel(int inPixel) {
+        int intensity = (Color.red(inPixel) + Color.green(inPixel) + Color.blue(inPixel)) / 3;
+        return Color.argb(Color.alpha(inPixel), intensity, intensity, intensity);
     }
+
 }

@@ -11,26 +11,17 @@ import android.graphics.Color;
 
 public class BrightnessFilter extends PhotoFilter {
 
+    final int adjustment = 100;
+
     BrightnessFilter(Activity a) {
         super(a);
     }
 
-    public Bitmap createTransform(Bitmap inBmp) {
-        int width = inBmp.getWidth();
-        int height = inBmp.getHeight();
-        Bitmap outBmp = Bitmap.createBitmap(width, height, inBmp.getConfig());
-        int adjustment = 100;
-
-        for (int w = 0; w < width; w++) {
-            for (int h = 0; h < height; h++) {
-                int inPixel = inBmp.getPixel(w, h);
-                int red   = super.constrain(Color.red(inPixel) + adjustment);
-                int green = super.constrain(Color.green(inPixel) + adjustment);
-                int blue  = super.constrain(Color.blue(inPixel) + adjustment);
-                int outPixel = Color.argb(Color.alpha(inPixel), red, green, blue);
-                outBmp.setPixel(w, h, outPixel);
-            }
-        }
-        return outBmp;
+    public int transformPixel(int inPixel) {
+        int red = constrain(Color.red(inPixel) + adjustment);
+        int green = constrain(Color.green(inPixel) + adjustment);
+        int blue = constrain(Color.blue(inPixel) + adjustment);
+        return Color.argb(Color.alpha(inPixel), red, green, blue);
     }
+
 }

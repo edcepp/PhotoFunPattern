@@ -13,10 +13,10 @@ import android.widget.ImageView;
 
 public class PhotoFilter {
 
-    public Activity rootActivity;
+    public Activity myRootActivity;
 
     public PhotoFilter(Activity a) {
-        rootActivity = a;
+        myRootActivity = a;
     }
 
     protected int constrain(int color) {
@@ -28,18 +28,27 @@ public class PhotoFilter {
             return color;
     }
 
-    public Bitmap createTransform(Bitmap inBmp) {
-        return inBmp;
+    public int transformPixel (int inPixel){
+        return inPixel;
     }
 
     public void apply() {
 
-        ImageView originalImageView = (ImageView) rootActivity.findViewById(R.id.originalImage);
+        ImageView originalImageView = (ImageView) myRootActivity.findViewById(R.id.originalImage);
         BitmapDrawable originalDrawableBmp = (BitmapDrawable) originalImageView.getDrawable();
         Bitmap originalBmp = originalDrawableBmp.getBitmap();
+        int width = originalBmp.getWidth();
+        int height = originalBmp.getHeight();
 
-        Bitmap newBmp = createTransform(originalBmp);
-        ImageView newImageView = (ImageView) rootActivity.findViewById(R.id.newImage);
+        Bitmap newBmp = Bitmap.createBitmap(width, height, originalBmp.getConfig());
+
+        for (int w = 0; w < width; w++) {
+            for (int h = 0; h < height; h++) {
+                int outPixel = transformPixel(originalBmp.getPixel(w, h));
+                newBmp.setPixel(w, h, outPixel);
+            }
+        }
+        ImageView newImageView = (ImageView) myRootActivity.findViewById(R.id.newImage);
         newImageView.setImageBitmap(newBmp);
 
     }
