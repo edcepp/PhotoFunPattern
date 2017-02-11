@@ -11,9 +11,9 @@ import android.widget.ImageView;
  * Created by eepp on 2/8/17.
  */
 
-public class PhotoFilter {
+public abstract class PhotoFilter {
 
-    public Activity myRootActivity;
+    protected Activity myRootActivity;
 
     public PhotoFilter(Activity a) {
         myRootActivity = a;
@@ -28,12 +28,11 @@ public class PhotoFilter {
             return color;
     }
 
-    public int transformPixel (int inPixel){
+    protected int transformPixel (int inPixel){
         return inPixel;
     }
 
     public void apply() {
-
         ImageView originalImageView = (ImageView) myRootActivity.findViewById(R.id.originalImage);
         BitmapDrawable originalDrawableBmp = (BitmapDrawable) originalImageView.getDrawable();
         Bitmap originalBmp = originalDrawableBmp.getBitmap();
@@ -50,8 +49,5 @@ public class PhotoFilter {
         }
         ImageView newImageView = (ImageView) myRootActivity.findViewById(R.id.newImage);
         newImageView.setImageBitmap(newBmp);
-
     }
-
-
 }

@@ -11,16 +11,16 @@ import android.graphics.Color;
 
 public class BrightnessFilter extends PhotoFilter {
 
-    final int adjustment = 100;
+    private final int ADJUSTMENT = 100;
 
     BrightnessFilter(Activity a) {
         super(a);
     }
 
     public int transformPixel(int inPixel) {
-        int red = constrain(Color.red(inPixel) + adjustment);
-        int green = constrain(Color.green(inPixel) + adjustment);
-        int blue = constrain(Color.blue(inPixel) + adjustment);
+        int red = constrain(Color.red(inPixel) + ADJUSTMENT);
+        int green = constrain(Color.green(inPixel) + ADJUSTMENT);
+        int blue = constrain(Color.blue(inPixel) + ADJUSTMENT);
         return Color.argb(Color.alpha(inPixel), red, green, blue);
     }
 
