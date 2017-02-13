@@ -13,12 +13,6 @@ import android.widget.ImageView;
 
 public abstract class PhotoFilter {
 
-    protected Activity myRootActivity;
-
-    public PhotoFilter(Activity a) {
-        myRootActivity = a;
-    }
-
     protected int constrain(int color) {
         if (color > 255)
             return 255;
@@ -32,22 +26,18 @@ public abstract class PhotoFilter {
         return inPixel;
     }
 
-    public void apply() {
-        ImageView originalImageView = (ImageView) myRootActivity.findViewById(R.id.originalImage);
-        BitmapDrawable originalDrawableBmp = (BitmapDrawable) originalImageView.getDrawable();
-        Bitmap originalBmp = originalDrawableBmp.getBitmap();
-        int width = originalBmp.getWidth();
-        int height = originalBmp.getHeight();
+    public Bitmap apply(Bitmap inBmp) {
+        int width = inBmp.getWidth();
+        int height = inBmp.getHeight();
 
-        Bitmap newBmp = Bitmap.createBitmap(width, height, originalBmp.getConfig());
+        Bitmap newBmp = Bitmap.createBitmap(width, height, inBmp.getConfig());
 
         for (int w = 0; w < width; w++) {
             for (int h = 0; h < height; h++) {
-                int outPixel = transformPixel(originalBmp.getPixel(w, h));
+                int outPixel = transformPixel(inBmp.getPixel(w, h));
                 newBmp.setPixel(w, h, outPixel);
             }
         }
-        ImageView newImageView = (ImageView) myRootActivity.findViewById(R.id.newImage);
-        newImageView.setImageBitmap(newBmp);
+        return newBmp;
     }
 }

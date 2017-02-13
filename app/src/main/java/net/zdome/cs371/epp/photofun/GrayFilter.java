@@ -13,10 +13,6 @@ import android.widget.ImageView;
 
 public class GrayFilter extends PhotoFilter {
 
-    GrayFilter(Activity a) {
-        super(a);
-    }
-
     public int transformPixel(int inPixel) {
         int intensity = (Color.red(inPixel) + Color.green(inPixel) + Color.blue(inPixel)) / 3;
         return Color.argb(Color.alpha(inPixel), intensity, intensity, intensity);

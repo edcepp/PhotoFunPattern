@@ -13,10 +13,6 @@ public class BrightnessFilter extends PhotoFilter {
 
     private final int ADJUSTMENT = 100;
 
-    BrightnessFilter(Activity a) {
-        super(a);
-    }
-
     public int transformPixel(int inPixel) {
         int red = constrain(Color.red(inPixel) + ADJUSTMENT);
         int green = constrain(Color.green(inPixel) + ADJUSTMENT);
