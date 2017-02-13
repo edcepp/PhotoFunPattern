@@ -1,7 +1,6 @@
 package net.zdome.cs371.epp.photofun;
 
 import android.support.v7.app.AppCompatActivity;
-import android.app.Activity;
 import android.os.Bundle;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;

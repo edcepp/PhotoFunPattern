@@ -1,10 +1,6 @@
 package net.zdome.cs371.epp.photofun;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.Color;
-import android.widget.ImageView;
 
 
 /**
