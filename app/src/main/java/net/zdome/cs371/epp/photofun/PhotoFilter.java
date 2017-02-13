@@ -2,11 +2,6 @@ package net.zdome.cs371.epp.photofun;
 
 import android.graphics.Bitmap;
 
-
-/**
- * Created by eepp on 2/8/17.
- */
-
 public abstract class PhotoFilter {
 
     protected int constrain(int color) {

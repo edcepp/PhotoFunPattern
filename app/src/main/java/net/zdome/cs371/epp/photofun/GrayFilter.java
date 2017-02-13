@@ -2,11 +2,6 @@ package net.zdome.cs371.epp.photofun;
 
 import android.graphics.Color;
 
-/**
- * Created by eepp on 2/10/17.
- */
-
-
 public class GrayFilter extends PhotoFilter {
 
     public int transformPixel(int inPixel) {
