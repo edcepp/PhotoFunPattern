@@ -3,8 +3,8 @@ package net.zdome.cs371.epp.photofun;
 import android.graphics.Bitmap;
 
 /**
- *  class PhotoFilter is the abstract filter parent class. Its default behavior is the leave
- *  an image unchanged.
+ *  class PhotoFilter is the abstract filter parent class. Its default behavior
+ *  is the leave an image unchanged.
  *
  *  @author Edward C. Epp
  *  @version November 2017
@@ -13,10 +13,11 @@ import android.graphics.Bitmap;
 public abstract class PhotoFilter {
 
     /*
-    * constrain This method does not permit an RGB color value to over or under saturate. It
-    * maintains values between 0 and 255 inclusive.
+    * constrain This method does not permit an RGB color value to over or under
+    * saturate. It maintains values between 0 and 255 inclusive.
     *
-    * @param inPixel is an integer input color component value that may be out of range
+    * @param inPixel is an integer input color component value that may be out
+    *                of range
     * @return a new color component in range
     */
     protected int constrain(int color) {
@@ -29,8 +30,8 @@ public abstract class PhotoFilter {
     }
 
     /*
-    * tranformPixel This is the default transform method. It leaves the pixel unchanged. It
-    * implements a copy image function.
+    * tranformPixel This is the default transform method. It leaves the pixel
+    * unchanged. It implements a copy image function.
     *
     * @param inPixel is a 32 bit pixel that contains RGB color values
     * @return a new Pixel in which unchanged color components
@@ -40,8 +41,8 @@ public abstract class PhotoFilter {
     }
 
     /*
-    * apply This method visits every pixel in the input image. It applies a transform to each
-    * pixel.
+    * apply This method visits every pixel in the input image. It applies a
+    * transform to each pixel.
     *
     * @param inBmp is the original image
     * @return a new image in which each pixel has been transformed

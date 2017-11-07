@@ -23,8 +23,8 @@ public class PhotoFun extends AppCompatActivity {
     private ImageView myNewImageView;
 
     /*
-    * onCreate This constructor lays out the user interface, initializes the original image and
-    * links buttons to their actions.
+    * onCreate This constructor lays out the user interface, initializes the
+    * original image and links buttons to their actions.
     *
     * @param savedInstanceState Required by parent object
     */
@@ -33,20 +33,26 @@ public class PhotoFun extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_fun);
 
-        ImageView originalImageView = (ImageView) findViewById(R.id.originalImage);
-        BitmapDrawable originalDrawableBmp = (BitmapDrawable) originalImageView.getDrawable();
+        ImageView originalImageView =
+                (ImageView) findViewById(R.id.originalImage);
+        BitmapDrawable originalDrawableBmp =
+                (BitmapDrawable) originalImageView.getDrawable();
         myOriginalBmp = originalDrawableBmp.getBitmap();
 
         myNewImageView = (ImageView) findViewById(R.id.newImage);
 
-        Button grayFilterButton = (Button) findViewById(R.id.grayFilterButton);
+        Button grayFilterButton =
+                (Button) findViewById(R.id.grayFilterButton);
         grayFilterButton.setOnClickListener(new grayFilterButtonListener());
-        Button brightnessFilterButton = (Button) findViewById(R.id.brightnessFilterButton);
-        brightnessFilterButton.setOnClickListener(new brightnessFilterButtonListener());
+        Button brightnessFilterButton =
+                (Button) findViewById(R.id.brightnessFilterButton);
+        brightnessFilterButton.setOnClickListener
+                (new brightnessFilterButtonListener());
     }
 
     /*
-    * class grayFilterButtonListener this inner class defines the action for the gray filter button.
+    * class grayFilterButtonListener this inner class defines the action for
+    * the gray filter button.
     */
     private class grayFilterButtonListener implements View.OnClickListener {
         public void onClick(View button) {
@@ -56,10 +62,12 @@ public class PhotoFun extends AppCompatActivity {
     }
 
     /*
-    * class grayFilterButtonListener this inner class defines the action for the brightness filter
+    * class grayFilterButtonListener this inner class defines the action for the
+    * brightness filter
     * button.
     */
-    private class brightnessFilterButtonListener implements View.OnClickListener {
+    private class brightnessFilterButtonListener
+            implements View.OnClickListener {
         public void onClick(View button) {
             BrightnessFilter filter = new BrightnessFilter();
             myNewImageView.setImageBitmap(filter.apply(myOriginalBmp));
