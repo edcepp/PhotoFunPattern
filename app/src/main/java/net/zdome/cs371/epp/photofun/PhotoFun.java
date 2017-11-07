@@ -23,8 +23,8 @@ public class PhotoFun extends AppCompatActivity {
     private ImageView myNewImageView;
 
     /*
-    * onCreate This construtor creates the app layout, initialezes the original image resouce, and
-    * links buttons to their action.
+    * onCreate This constructor lays out the user interface, initializes the original image and
+    * links buttons to their actions.
     *
     * @param savedInstanceState Required by parent object
     */
@@ -46,7 +46,7 @@ public class PhotoFun extends AppCompatActivity {
     }
 
     /*
-    * class grayFilterButtonListener defines the action for the gray filter button.
+    * class grayFilterButtonListener this inner class defines the action for the gray filter button.
     */
     private class grayFilterButtonListener implements View.OnClickListener {
         public void onClick(View button) {
@@ -56,7 +56,8 @@ public class PhotoFun extends AppCompatActivity {
     }
 
     /*
-    * class grayFilterButtonListener defines the action for the brightness filter button.
+    * class grayFilterButtonListener this inner class defines the action for the brightness filter
+    * button.
     */
     private class brightnessFilterButtonListener implements View.OnClickListener {
         public void onClick(View button) {

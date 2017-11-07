@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 /**
  *  class PhotoFilter is the abstract filter parent class. Its default behavior is the leave
- *  pixel values unchanged.
+ *  an image unchanged.
  *
  *  @author Edward C. Epp
  *  @version November 2017
@@ -13,7 +13,7 @@ import android.graphics.Bitmap;
 public abstract class PhotoFilter {
 
     /*
-    * constrain This method does not permite an RGB color value to over or under saturate. It
+    * constrain This method does not permit an RGB color value to over or under saturate. It
     * maintains values between 0 and 255 inclusive.
     *
     * @param inPixel is an integer input color component value that may be out of range
@@ -29,11 +29,11 @@ public abstract class PhotoFilter {
     }
 
     /*
-    * tranformPixel This is the default method. It leaves the pixel unchanged. I implements
-    * a copy image function.
+    * tranformPixel This is the default transform method. It leaves the pixel unchanged. It
+    * implements a copy image function.
     *
     * @param inPixel is a 32 bit pixel that contains RGB color values
-    * @return a new Pixel in which unchaged color compoents
+    * @return a new Pixel in which unchanged color components
     */
     protected int transformPixel (int inPixel){
         return inPixel;

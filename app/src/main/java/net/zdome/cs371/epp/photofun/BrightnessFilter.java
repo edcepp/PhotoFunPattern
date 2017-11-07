@@ -3,8 +3,8 @@ package net.zdome.cs371.epp.photofun;
 import android.graphics.Color;
 
 /**
- *  class BrightFilter changes the pixel manipulation behavior of its parent PhotoFilter to
- *  increase the brightness of each pixel by 100.
+ *  class BrightFilter changes the image manipulation behavior of its parent PhotoFilter to
+ *  increase an image brightness by value of 100.
  *
  *  @author Edward C. Epp
  *  @version November 2017

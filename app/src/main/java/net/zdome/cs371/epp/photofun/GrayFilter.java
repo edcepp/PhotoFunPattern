@@ -3,8 +3,8 @@ package net.zdome.cs371.epp.photofun;
 import android.graphics.Color;
 
 /**
- *  class GrayFilter changes the pixel manipulation behavior of its parent PhotoFilter to
- *  transform pixels from color to gray.
+ *  class GrayFilter changes the image manipulation behavior of its parent PhotoFilter to
+ *  convert the image to gray scale.
  *
  *  @author Edward C. Epp
  *  @version November 2017
