@@ -8,11 +8,26 @@ import android.widget.ImageView;
 import android.widget.Button;
 import android.view.View;
 
+/**
+ *  class PhotoFun controls this photo manipulation app.
+ *
+ *  @author Edward C. Epp
+ *  @version November 2017
+ *  https://github.com/edcepp/PhotoFunPattern
+ */
+
 public class PhotoFun extends AppCompatActivity {
 
+    // Image resources
     private Bitmap myOriginalBmp;
     private ImageView myNewImageView;
 
+    /*
+    * onCreate This construtor creates the app layout, initialezes the original image resouce, and
+    * links buttons to their action.
+    *
+    * @param savedInstanceState Required by parent object
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +45,9 @@ public class PhotoFun extends AppCompatActivity {
         brightnessFilterButton.setOnClickListener(new brightnessFilterButtonListener());
     }
 
+    /*
+    * class grayFilterButtonListener defines the action for the gray filter button.
+    */
     private class grayFilterButtonListener implements View.OnClickListener {
         public void onClick(View button) {
             GrayFilter filter = new GrayFilter();
@@ -37,6 +55,9 @@ public class PhotoFun extends AppCompatActivity {
         }
     }
 
+    /*
+    * class grayFilterButtonListener defines the action for the brightness filter button.
+    */
     private class brightnessFilterButtonListener implements View.OnClickListener {
         public void onClick(View button) {
             BrightnessFilter filter = new BrightnessFilter();

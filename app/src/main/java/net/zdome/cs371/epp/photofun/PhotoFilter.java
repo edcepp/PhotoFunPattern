@@ -2,8 +2,23 @@ package net.zdome.cs371.epp.photofun;
 
 import android.graphics.Bitmap;
 
+/**
+ *  class PhotoFilter is the abstract filter parent class. Its default behavior is the leave
+ *  pixel values unchanged.
+ *
+ *  @author Edward C. Epp
+ *  @version November 2017
+ *  https://github.com/edcepp/PhotoFunPattern
+ */
 public abstract class PhotoFilter {
 
+    /*
+    * constrain This method does not permite an RGB color value to over or under saturate. It
+    * maintains values between 0 and 255 inclusive.
+    *
+    * @param inPixel is an integer input color component value that may be out of range
+    * @return a new color component in range
+    */
     protected int constrain(int color) {
         if (color > 255)
             return 255;
@@ -13,10 +28,24 @@ public abstract class PhotoFilter {
             return color;
     }
 
+    /*
+    * tranformPixel This is the default method. It leaves the pixel unchanged. I implements
+    * a copy image function.
+    *
+    * @param inPixel is a 32 bit pixel that contains RGB color values
+    * @return a new Pixel in which unchaged color compoents
+    */
     protected int transformPixel (int inPixel){
         return inPixel;
     }
 
+    /*
+    * apply This method visits every pixel in the input image. It applies a transform to each
+    * pixel.
+    *
+    * @param inBmp is the original image
+    * @return a new image in which each pixel has been transformed
+    */
     public Bitmap apply(Bitmap inBmp) {
         int width = inBmp.getWidth();
         int height = inBmp.getHeight();
