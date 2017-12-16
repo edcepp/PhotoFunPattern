@@ -13,7 +13,7 @@ import android.view.View;
  *
  *  @author Edward C. Epp
  *  @version November 2017
- *  https://github.com/edcepp/PhotoFunPattern
+ *   https://github.com/edcepp/PhotoFunPattern
  */
 
 public class PhotoFun extends AppCompatActivity {
