@@ -1,7 +1,11 @@
 package net.zdome.cs371.epp.photofun;
 
 /**
- * Created by eepp on 12/16/17.
+ *  class GUIState maintains the state of GUI control values.
+ *
+ *  @author Edward C. Epp
+ *  @version December 2017
+ *   https://github.com/edcepp/PhotoFunPattern
  */
 
 
