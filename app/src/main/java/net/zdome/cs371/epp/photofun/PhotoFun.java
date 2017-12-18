@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
 import android.widget.Button;
+import android.widget.TextView;
 import android.view.View;
 import android.util.Log;
 
@@ -22,6 +23,7 @@ public class PhotoFun extends AppCompatActivity {
     // Image resources
     private Bitmap myOriginalBmp;
     private ImageView myNewImageView;
+    private TextView myBrightnessDeltaView;
 //    private GUIState ourGUIState; TODO remove
 
     /*
@@ -62,6 +64,8 @@ public class PhotoFun extends AppCompatActivity {
         brightnessDecreaseButton.setOnClickListener
                 (new brightnessDecreaseButtonListener());
 
+        myBrightnessDeltaView =
+                (TextView) findViewById (R.id.brightnessDeltaText);
     }
 
     /*
@@ -97,7 +101,8 @@ public class PhotoFun extends AppCompatActivity {
             implements View.OnClickListener {
         public void onClick(View button) {
             GUIState.ourBrightnessDelta += 5;
-            Log.i("PhotoFun","Bright delta " + GUIState.ourBrightnessDelta);
+            myBrightnessDeltaView.setText("" + GUIState.ourBrightnessDelta);
+            //Log.i("PhotoFun","Bright delta " + GUIState.ourBrightnessDelta);
         }
     }
 
@@ -110,7 +115,8 @@ public class PhotoFun extends AppCompatActivity {
             implements View.OnClickListener {
         public void onClick(View button) {
             GUIState.ourBrightnessDelta -= 5;
-            Log.i("PhotoFun","Bright delta " + GUIState.ourBrightnessDelta);
+            myBrightnessDeltaView.setText("" + GUIState.ourBrightnessDelta);
+            //Log.i("PhotoFun","Bright delta " + GUIState.ourBrightnessDelta);
         }
     }
 
