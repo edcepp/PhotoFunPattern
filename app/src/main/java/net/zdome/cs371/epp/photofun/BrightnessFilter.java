@@ -1,6 +1,7 @@
 package net.zdome.cs371.epp.photofun;
 
 import android.graphics.Color;
+import android.util.Log;
 
 /**
  *  class BrightFilter changes the image manipulation behavior of its parent
@@ -24,9 +25,10 @@ public class BrightnessFilter extends PhotoFilter {
     * @return a new Pixel in which each of the RGB components has been increased
     */
     public int transformPixel(int inPixel) {
-        int red = constrain(Color.red(inPixel) + ADJUSTMENT);
-        int green = constrain(Color.green(inPixel) + ADJUSTMENT);
-        int blue = constrain(Color.blue(inPixel) + ADJUSTMENT);
+        int adjustment = GUIState.ourBrightnessDelta;
+        int red = constrain(Color.red(inPixel) + adjustment);
+        int green = constrain(Color.green(inPixel) + adjustment);
+        int blue = constrain(Color.blue(inPixel) + adjustment);
         return Color.argb(Color.alpha(inPixel), red, green, blue);
     }
 

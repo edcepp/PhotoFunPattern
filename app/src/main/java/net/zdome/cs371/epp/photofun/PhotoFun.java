@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
 import android.widget.Button;
 import android.view.View;
+import android.util.Log;
 
 /**
  *  class PhotoFun controls this photo manipulation app.
@@ -21,6 +22,7 @@ public class PhotoFun extends AppCompatActivity {
     // Image resources
     private Bitmap myOriginalBmp;
     private ImageView myNewImageView;
+//    private GUIState ourGUIState; TODO remove
 
     /*
     * onCreate This constructor lays out the user interface, initializes the
@@ -44,10 +46,22 @@ public class PhotoFun extends AppCompatActivity {
         Button grayFilterButton =
                 (Button) findViewById(R.id.grayFilterButton);
         grayFilterButton.setOnClickListener(new grayFilterButtonListener());
+
         Button brightnessFilterButton =
                 (Button) findViewById(R.id.brightnessFilterButton);
         brightnessFilterButton.setOnClickListener
                 (new brightnessFilterButtonListener());
+
+        Button brightnessIncreaseButton =
+                (Button) findViewById (R.id.brightnessIncreaseButton);
+        brightnessIncreaseButton.setOnClickListener
+                (new brightnessIncreaseButtonListener());
+
+        Button brightnessDecreaseButton =
+                (Button) findViewById (R.id.brightnessDecreaseButton);
+        brightnessDecreaseButton.setOnClickListener
+                (new brightnessDecreaseButtonListener());
+
     }
 
     /*
@@ -62,7 +76,7 @@ public class PhotoFun extends AppCompatActivity {
     }
 
     /*
-    * class grayFilterButtonListener this inner class defines the action for the
+    * class brightnessFilterButtonListener this inner class defines the action for the
     * brightness filter
     * button.
     */
@@ -73,5 +87,32 @@ public class PhotoFun extends AppCompatActivity {
             myNewImageView.setImageBitmap(filter.apply(myOriginalBmp));
         }
     }
+
+    /*
+    * class brightnessIncreaseButtonListener this inner class defines the action for
+    * increasing brightness
+    * button.
+    */
+    private class brightnessIncreaseButtonListener
+            implements View.OnClickListener {
+        public void onClick(View button) {
+            GUIState.ourBrightnessDelta += 5;
+            Log.i("PhotoFun","Bright delta " + GUIState.ourBrightnessDelta);
+        }
+    }
+
+     /*
+    * class brightnessDecreaseButtonListener this inner class defines the action for
+    * increasing brightness
+    * button.
+    */
+    private class brightnessDecreaseButtonListener
+            implements View.OnClickListener {
+        public void onClick(View button) {
+            GUIState.ourBrightnessDelta -= 5;
+            Log.i("PhotoFun","Bright delta " + GUIState.ourBrightnessDelta);
+        }
+    }
+
 }
 
