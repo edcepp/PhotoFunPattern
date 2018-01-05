@@ -27,7 +27,8 @@ public class BrightnessFilter extends PhotoFilter {
         int red = constrain(Color.red(inPixel) + ADJUSTMENT);
         int green = constrain(Color.green(inPixel) + ADJUSTMENT);
         int blue = constrain(Color.blue(inPixel) + ADJUSTMENT);
-        return Color.argb(Color.alpha(inPixel), red, green, blue);
+        int outPixel = Color.argb(Color.alpha(inPixel), red, green, blue);
+        return outPixel;
     }
 
 }
